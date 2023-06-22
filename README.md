@@ -4,7 +4,7 @@
 
 
 ## Description
-A simple IPTV tool based on:
+A simple IPTV terminal tool based on:
 
 >termv: https://github.com/Roshan-R/termv.git
 
