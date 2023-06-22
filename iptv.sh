@@ -6,10 +6,6 @@ BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 rm -rf $BASEDIR/channels/* $BASEDIR/streams/*
 
 # select IPTV source
-COLOR_LIST='\033[0;32m'
-COLOR_TEXT='\033[0;33m'
-NC='\033[0m'
-
 m3uSources=(
   "plex"
   "plutoTv-gb"
@@ -26,18 +22,89 @@ m3uUrls=(
   "https://i.mjh.nz/SamsungTVPlus/us.m3u8"
   "https://i.mjh.nz/Stirr/all.m3u8"
 )
-for ((i = 0; i < ${#m3uSources[@]}; i++)); do
-  src=${m3uSources[$i]}
-  j=$(($i + 1))
-  echo -e "${COLOR_LIST}[${NC}${COLOR_TEXT}$j${NC}${COLOR_LIST}]${NC}" "${COLOR_LIST}$src${NC}"
-done
 
-echo -e "${COLOR_TEXT}Enter file number${NC}"
-read number
-actualNumber=$(($number - 1))
-url="${m3uUrls[$actualNumber]}"
+# select using arrow keys
+function print_menu() { # selected_item, ...m3uSources
+  local function_arguments=($@)
+  local selected_item="$1"
+  local m3uSources=(${function_arguments[@]:1})
+  local menu_size="${#m3uSources[@]}"
+
+  for ((i = 0; i < $menu_size; ++i)); do
+    if [ "$i" = "$selected_item" ]; then
+      echo "-> ${m3uSources[i]}"
+    else
+      echo "   ${m3uSources[i]}"
+    fi
+  done
+}
+
+function run_menu() { # selected_item, ...m3uSources
+  local function_arguments=($@)
+  local selected_item="$1"
+  local m3uSources=(${function_arguments[@]:1})
+  local menu_size="${#m3uSources[@]}"
+  local menu_limit=$((menu_size - 1))
+
+  clear
+  print_menu "$selected_item" "${m3uSources[@]}"
+
+  while read -rsn1 input; do
+    case "$input" in
+      $'\x1B') # ESC ASCII code (https://dirask.com/posts/ASCII-Table-pJ3Y0j)
+        read -rsn1 -t 0.1 input
+        if [ "$input" = "[" ]; then # occurs before arrow code
+          read -rsn1 -t 0.1 input
+          case "$input" in
+            A) # Up Arrow
+              if [ "$selected_item" -ge 1 ]; then
+                selected_item=$((selected_item - 1))
+                clear
+                print_menu "$selected_item" "${m3uSources[@]}"
+              fi
+              ;;
+            B) # Down Arrow
+              if [ "$selected_item" -lt "$menu_limit" ]; then
+                selected_item=$((selected_item + 1))
+                clear
+                print_menu "$selected_item" "${m3uSources[@]}"
+              fi
+              ;;
+          esac
+        fi
+        read -rsn5 -t 0.1 # flushing stdin
+        ;;
+      "") # Enter key
+        return "$selected_item"
+        ;;
+    esac
+  done
+}
+
+selected_item=0
+run_menu "$selected_item" "${m3uSources[@]}"
+selectedSourceIndex="$?"
+echo
+url="${m3uUrls[$selectedSourceIndex]}"
 cd $BASEDIR/streams
 curl -LO $url
+
+# # select by inputing a number
+# COLOR_LIST='\033[0;32m'
+# COLOR_TEXT='\033[0;33m'
+# NC='\033[0m'
+# for ((i = 0; i < ${#m3uSources[@]}; i++)); do
+#   src=${m3uSources[$i]}
+#   j=$(($i + 1))
+#   echo -e "${COLOR_LIST}[${NC}${COLOR_TEXT}$j${NC}${COLOR_LIST}]${NC}" "${COLOR_LIST}$src${NC}"
+# done
+#
+# echo -e "${COLOR_TEXT}Enter file number${NC}"
+# read number
+# actualNumber=$(($number - 1))
+# url="${m3uUrls[$actualNumber]}"
+# cd $BASEDIR/streams
+# curl -LO $url
 
 # generate m3u file
 m3uFiles=($(ls $BASEDIR/streams/*))
