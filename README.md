@@ -4,59 +4,40 @@
 
 
 ## Description
+A simple IPTV tool based on:
 
-<!-- ## Features -->
+>termv: https://github.com/Roshan-R/termv.git
 
+and
 
-<!-- ## Core Dependancies -->
+>iptv-org: https://github.com/iptv-org/iptv.git
 
+### Requirements
 
-<!-- ## Inspirations -->
+1. mpv video player should be installed in the pc (linux)
 
+2. install and setup yt-dlp in mpv for better streaming. I have included basic mpv config below (optional)
 
-<!-- ## Screen Shots -->
+### How to:
+    git clone https://github.com/kilisio/iptv.git
+    cd iptv
+    npm install
+    ./iptv.sh
 
+### Configs
 
-<!-- # INSTALLATION -->
+```bash
+# mpv.conf
+script-opts-append=ytdl_hook-ytdl_path=yt-dlp
+script-opts-append=ytdl_hook-try_ytdl_first=yes
+cache=no
+ytdl-format=[height<=480][width<=720]
+untimed=yes
 
+# .bashrc
+export TERMV_DEFAULT_MPV_FLAGS="--no-resume-playback --cache=no --hwdec=no --ytdl-format=[height<=480][width<=720]"
 
-<!-- ## Prerequisites -->
-
-
-<!-- ## Install -->
-
-
-<!-- ## Usage -->
-
-
-<!-- ## Usage -->
-
-
-<!-- # DOCUMENTATION -->
-
-
-<!-- # CONTRIBUTION -->
-
-
-<!-- ## Features, Issues and Fixes -->
-
-
-<!-- ## Author -->
-
-
-<!-- ## Contributors -->
-
-
-<!-- ## Backers -->
-
-
-<!-- ## Sponsors -->
-
-
-<!-- # ATTRIBUTION -->
-
-
-<!-- # SUPPORT -->
+```
 
 
 # LICENSE
