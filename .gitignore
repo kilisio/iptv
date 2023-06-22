@@ -6,3 +6,7 @@ node_modules
 .gh-pages
 .api
 .env
+scripts/tmp
+streams
+cache
+channels

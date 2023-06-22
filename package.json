@@ -1,9 +1,13 @@
 {
   "name": "iptv",
+  "version": "0.0.3",
   "scripts": {
     "api:generate": "node scripts/commands/api/generate.js",
     "db:create": "node scripts/commands/database/create.js",
-    "update": "npm run db:create && npm run api:generate"
+    "update": "npm run db:create && npm run api:generate",
+    "rls": "nps rls",
+    "feat": "nps feat",
+    "fix": "nps fix"
   },
   "dependencies": {
     "@pawanpaudel93/m3u-parser": "^1.1.1",
@@ -14,5 +18,25 @@
     "lodash": "^4.17.21",
     "nedb-promises": "^5.0.2",
     "signale": "^1.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "~17.2.0",
+    "@commitlint/config-conventional": "~17.2.0",
+    "commitizen": "~4.2.5",
+    "cz-conventional-changelog": "~3.3.0",
+    "esm": "^3.2.25",
+    "husky": "~8.0.2",
+    "nps": "~5.10.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "maxHeaderWidth": 200,
+      "maxLineWidth": 200
+    }
+  },
+  "license": "MIT",
+  "husky": {
+    "hooks": {}
   }
 }
