@@ -7,6 +7,8 @@ and
 
 >iptv-org: https://github.com/iptv-org/iptv.git
 
+![IPTV terminal app](doc/assets/images/iptv.png)
+
 ## Requirements
 
 1. mpv video player should be installed in the pc (linux)
