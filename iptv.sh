@@ -13,14 +13,22 @@ m3uSources=(
   "samsungPlus-gb"
   "samsungPlus-us"
   "stirr"
+  "PBS"
+  "PBSKids"
+  "Roku"
+  "Tubi"
 )
 m3uUrls=(
-  "https://i.mjh.nz/Plex/us.m3u8"
-  "https://i.mjh.nz/PlutoTV/gb.m3u8"
-  "https://i.mjh.nz/PlutoTV/us.m3u8"
-  "https://i.mjh.nz/SamsungTVPlus/gb.m3u8"
-  "https://i.mjh.nz/SamsungTVPlus/us.m3u8"
-  "https://i.mjh.nz/Stirr/all.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/Plex/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=gb&service=/PlutoTV/gb.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/PlutoTV/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=gb&service=/SamsungTVPlus/gb.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/SamsungTVPlus/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/Stirr/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/PBS/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/PBSKids/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/Roku/us.m3u8"
+  "https://tinyurl.com/multiservice21?region=us&service=/Tubi/us.m3u8"
 )
 
 # select using arrow keys

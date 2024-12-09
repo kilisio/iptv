@@ -1,10 +1,12 @@
 {
   "name": "iptv",
+  "version": "0.1.9",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "iptv",
+      "version": "0.1.9",
       "license": "MIT",
       "dependencies": {
         "@pawanpaudel93/m3u-parser": "^1.1.1",
@@ -24,8 +26,7 @@
         "esm": "^3.2.25",
         "husky": "~8.0.2",
         "nps": "~5.10.0"
-      },
-      "version": "0.1.8"
+      }
     },
     "node_modules/@ampproject/remapping": {
       "version": "2.2.1",
@@ -12220,6 +12221,5 @@
       "integrity": "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==",
       "dev": true
     }
-  },
-  "version": "0.1.8"
+  }
 }
