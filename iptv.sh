@@ -15,20 +15,18 @@ m3uSources=(
   "stirr"
   "PBS"
   "PBSKids"
-  "Roku"
   "Tubi"
 )
 m3uUrls=(
-  "https://tinyurl.com/multiservice21?region=us&service=/Plex/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=gb&service=/PlutoTV/gb.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/PlutoTV/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=gb&service=/SamsungTVPlus/gb.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/SamsungTVPlus/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/Stirr/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/PBS/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/PBSKids/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/Roku/us.m3u8"
-  "https://tinyurl.com/multiservice21?region=us&service=/Tubi/us.m3u8"
+  "http://127.0.0.1:4242?region=us&service=Plex"
+  "http://127.0.0.1:4242?region=gb&service=PlutoTV"
+  "http://127.0.0.1:4242?region=us&service=PlutoTV"
+  "http://127.0.0.1:4242?region=gb&service=SamsungTVPlus"
+  "http://127.0.0.1:4242?region=us&service=SamsungTVPlus"
+  "http://127.0.0.1:4242?region=us&service=Stirr"
+  "http://127.0.0.1:4242?region=us&service=PBS"
+  "http://127.0.0.1:4242?region=us&service=PBSKids"
+  "http://127.0.0.1:4242?region=us&service=Tubi"
 )
 
 # select using arrow keys
@@ -94,25 +92,9 @@ run_menu "$selected_item" "${m3uSources[@]}"
 selectedSourceIndex="$?"
 echo
 url="${m3uUrls[$selectedSourceIndex]}"
+# echo $url
 cd $BASEDIR/streams
-curl -LO $url
-
-# # select by inputing a number
-# COLOR_LIST='\033[0;32m'
-# COLOR_TEXT='\033[0;33m'
-# NC='\033[0m'
-# for ((i = 0; i < ${#m3uSources[@]}; i++)); do
-#   src=${m3uSources[$i]}
-#   j=$(($i + 1))
-#   echo -e "${COLOR_LIST}[${NC}${COLOR_TEXT}$j${NC}${COLOR_LIST}]${NC}" "${COLOR_LIST}$src${NC}"
-# done
-#
-# echo -e "${COLOR_TEXT}Enter file number${NC}"
-# read number
-# actualNumber=$(($number - 1))
-# url="${m3uUrls[$actualNumber]}"
-# cd $BASEDIR/streams
-# curl -LO $url
+curl -L $url -o "stream.m3u8"
 
 # generate m3u file
 m3uFiles=($(ls $BASEDIR/streams/*))

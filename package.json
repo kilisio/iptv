@@ -1,6 +1,6 @@
 {
   "name": "iptv",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "scripts": {
     "api:generate": "node scripts/commands/api/generate.js",
     "db:create": "node scripts/commands/database/create.js",

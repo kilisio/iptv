@@ -1,12 +1,12 @@
 {
   "name": "iptv",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "iptv",
-      "version": "0.1.9",
+      "version": "0.1.10",
       "license": "MIT",
       "dependencies": {
         "@pawanpaudel93/m3u-parser": "^1.1.1",
