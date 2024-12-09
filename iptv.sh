@@ -2,6 +2,9 @@
 
 # dependencies: mpv fzf jq curl gawk
 
+# start free channels server
+node "$HOME/free-iptv-channels/node/index.js" &
+
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 rm -rf $BASEDIR/channels/* $BASEDIR/streams/*
 
