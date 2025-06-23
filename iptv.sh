@@ -178,12 +178,12 @@ _play() {
     xdo hide
     # shellcheck disable=SC2086
     # mpv "${*##* }" ${TERMV_MPV_FLAGS} --force-media-title="${*%%  *}" --force-window=immediate
-    streamlink "${*##* }" "432p,480p,540p,576p,640p,360p,432p_alt,480p_alt,540p_alt,576p_alt,640p_alt,360p_alt,300k,600k,900k,1000k,1600k,2300k,720p,720p_alt,best" --mux-subtitles --ringbuffer-size 64M -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'  --force-window=immediate" --hls-audio-select "*"
+    streamlink "${*##* }" "360p,432p,480p,540p,576p,640p,360p_alt,432p_alt,480p_alt,540p_alt,576p_alt,640p_alt,600k,900k,1000k,1600k,2300k,720p,720p_alt,best" --mux-subtitles --ringbuffer-size 64M -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'  --force-window=immediate" --hls-audio-select "*"
     xdo show "$WID" && xdo activate "$WID"
   else
     # shellcheck disable=SC2086
     # mpv "${*##* }" ${TERMV_MPV_FLAGS} --force-media-title="${*%%  *}"
-    streamlink "${*##* }" "432p,480p,540p,576p,640p,360p,432p_alt,480p_alt,540p_alt,576p_alt,640p_alt,360p_alt,300k,600k,900k,1000k,1600k,2300k,720p,720p_alt,best" --ringbuffer-size 64M --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'" --hls-audio-select "*"
+    streamlink "${*##* }" "360p,432p,480p,540p,576p,640p,360p_alt,432p_alt,480p_alt,540p_alt,576p_alt,640p_alt,600k,900k,1000k,1600k,2300k,720p,720p_alt,best" --ringbuffer-size 64M --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'" --hls-audio-select "*"
   fi
 }
 
